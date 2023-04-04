@@ -1,0 +1,34 @@
+[2023-04-04T03:47:55.425+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: demo_dag2.upload_to_azure_sql manual__2023-04-04T03:47:47.286103+00:00 [queued]>
+[2023-04-04T03:47:55.430+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: demo_dag2.upload_to_azure_sql manual__2023-04-04T03:47:47.286103+00:00 [queued]>
+[2023-04-04T03:47:55.431+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-04T03:47:55.431+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-04-04T03:47:55.431+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-04T03:47:55.439+0000] {taskinstance.py:1303} INFO - Executing <Task(_PythonDecoratedOperator): upload_to_azure_sql> on 2023-04-04 03:47:47.286103+00:00
+[2023-04-04T03:47:55.444+0000] {standard_task_runner.py:55} INFO - Started process 285 to run task
+[2023-04-04T03:47:55.448+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'demo_dag2', 'upload_to_azure_sql', 'manual__2023-04-04T03:47:47.286103+00:00', '--job-id', '470', '--raw', '--subdir', 'DAGS_FOLDER/test_dag2.py', '--cfg-path', '/tmp/tmpht416eu7']
+[2023-04-04T03:47:55.448+0000] {standard_task_runner.py:83} INFO - Job 470: Subtask upload_to_azure_sql
+[2023-04-04T03:47:55.501+0000] {task_command.py:388} INFO - Running <TaskInstance: demo_dag2.upload_to_azure_sql manual__2023-04-04T03:47:47.286103+00:00 [running]> on host 8206d31aa2d9
+[2023-04-04T03:47:55.559+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=demo_dag2
+AIRFLOW_CTX_TASK_ID=upload_to_azure_sql
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-04T03:47:47.286103+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-04-04T03:47:47.286103+00:00
+[2023-04-04T03:47:57.857+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/decorators/base.py", line 217, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/test_dag2.py", line 154, in upload_to_azure_sql
+    row.scores_away_total
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Incorrect syntax near ')'. (102) (SQLExecDirectW)")
+[2023-04-04T03:47:57.881+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=demo_dag2, task_id=upload_to_azure_sql, execution_date=20230404T034747, start_date=20230404T034755, end_date=20230404T034757
+[2023-04-04T03:47:57.901+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 470 for task upload_to_azure_sql (('42000', "[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Incorrect syntax near ')'. (102) (SQLExecDirectW)"); 285)
+[2023-04-04T03:47:57.973+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-04-04T03:47:57.994+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

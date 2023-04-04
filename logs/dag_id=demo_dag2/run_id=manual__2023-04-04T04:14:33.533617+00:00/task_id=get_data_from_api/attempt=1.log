@@ -1,0 +1,23 @@
+[2023-04-04T04:14:34.762+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: demo_dag2.get_data_from_api manual__2023-04-04T04:14:33.533617+00:00 [queued]>
+[2023-04-04T04:14:34.769+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: demo_dag2.get_data_from_api manual__2023-04-04T04:14:33.533617+00:00 [queued]>
+[2023-04-04T04:14:34.770+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-04T04:14:34.770+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-04-04T04:14:34.771+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-04T04:14:34.780+0000] {taskinstance.py:1303} INFO - Executing <Task(_PythonDecoratedOperator): get_data_from_api> on 2023-04-04 04:14:33.533617+00:00
+[2023-04-04T04:14:34.786+0000] {standard_task_runner.py:55} INFO - Started process 920 to run task
+[2023-04-04T04:14:34.790+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'demo_dag2', 'get_data_from_api', 'manual__2023-04-04T04:14:33.533617+00:00', '--job-id', '481', '--raw', '--subdir', 'DAGS_FOLDER/test_dag2.py', '--cfg-path', '/tmp/tmpwbk3mq11']
+[2023-04-04T04:14:34.791+0000] {standard_task_runner.py:83} INFO - Job 481: Subtask get_data_from_api
+[2023-04-04T04:14:34.880+0000] {task_command.py:388} INFO - Running <TaskInstance: demo_dag2.get_data_from_api manual__2023-04-04T04:14:33.533617+00:00 [running]> on host 8206d31aa2d9
+[2023-04-04T04:14:34.951+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=demo_dag2
+AIRFLOW_CTX_TASK_ID=get_data_from_api
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-04T04:14:33.533617+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-04-04T04:14:33.533617+00:00
+[2023-04-04T04:14:38.102+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-04-04T04:14:38.132+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=demo_dag2, task_id=get_data_from_api, execution_date=20230404T041433, start_date=20230404T041434, end_date=20230404T041438
+[2023-04-04T04:14:38.312+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-04-04T04:14:38.371+0000] {taskinstance.py:2585} INFO - 1 downstream tasks scheduled from follow-on schedule check

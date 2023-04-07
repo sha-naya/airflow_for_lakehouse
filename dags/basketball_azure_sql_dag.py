@@ -11,7 +11,7 @@ import pyodbc
 import numpy as np
 
 with DAG(
-    dag_id="demo_dag2",
+    dag_id="basketball_azure_sql_dag",
     start_date=datetime(2023, 4, 7),
     schedule="@daily"
     ) as dag:

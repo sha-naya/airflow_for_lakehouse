@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date, timedelta
 
 from airflow import DAG
 from airflow.decorators import task
@@ -12,8 +12,8 @@ import numpy as np
 
 with DAG(
     dag_id="demo_dag2",
-    start_date=datetime(2023, 4, 1),
-    schedule="0 0 * * *"
+    start_date=datetime(2023, 4, 7),
+    schedule="@daily"
     ) as dag:
 
     @task

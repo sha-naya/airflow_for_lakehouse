@@ -1,5 +1,4 @@
 from airflow.decorators import dag, task
-#from pendulum import datetime
 from datetime import datetime, date, timedelta
 
 import requests
@@ -28,7 +27,7 @@ def upload_to_mysql(json_response):
 
     json_response_norm = pd.json_normalize(json_response['response'], sep='_')
 
-    json_response_norm.to_sql(con=engine, name='hockey_matches_raw', if_exists='append', flavor='mysql')
+    json_response_norm.to_sql(con=engine, name='hockey_matches_raw', if_exists='append')
 
 default_args = {"start_date": datetime(2023, 4, 20)}
 

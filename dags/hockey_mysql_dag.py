@@ -3,7 +3,7 @@ from airflow.decorators import dag, task
 from datetime import datetime, date, timedelta
 
 import requests
-import pymysql
+from sqlalchemy import create_engine
 import pandas as pd
 
 @task
@@ -24,17 +24,11 @@ def get_hockey_matches():
 
 @task
 def upload_to_mysql(json_response):
-    host_url="mysql-db.clnepvfqmsjh.us-east-1.rds.amazonaws.com"
-    port=3306
-    user="admin"
-    database="hockey_data"
-    passwd='kwZQXExJUB4s6PY1XOM6'
-
-    conn =  pymysql.connect(host=host_url, user=user, passwd=passwd, port=port, database=database)
+    engine = create_engine('mysql+pymysql://admin:kwZQXExJUB4s6PY1XOM6@mysql-db.clnepvfqmsjh.us-east-1.rds.amazonaws.com/hockey_data')
 
     json_response_norm = pd.json_normalize(json_response['response'], sep='_')
 
-    json_response_norm.to_sql(con=conn, name='hockey_matches_raw', if_exists='append', flavor='mysql')
+    json_response_norm.to_sql(con=engine, name='hockey_matches_raw', if_exists='append', flavor='mysql')
 
 default_args = {"start_date": datetime(2023, 4, 20)}
 
